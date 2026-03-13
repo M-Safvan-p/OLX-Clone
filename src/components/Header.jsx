@@ -2,14 +2,14 @@ import { useState } from "react";
 import { Search, Heart, MapPin, ChevronRight, UserCircle  } from "lucide-react";
 import { auth } from "../config/firebase";
 import { signOut } from "firebase/auth";
-import { useAuthState } from "react-firebase-hooks/auth";
+import { useAuth } from "react-firebase-hooks/auth";
 import LoginModal from "./LoginModal";
 import { Link } from "react-router-dom";
 
 export default function Header() {
   const [showLogin, setShowLogin] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
-  const [user] = useAuthState(auth);
+  const [user] = useAuth(auth);
 
   const handleWishlistClick = () => {
     if (!user) setShowLogin(true);
