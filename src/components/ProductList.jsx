@@ -14,7 +14,7 @@ export default function ProductList({ selectedCategory }) {
       try {
         const snapshot = await getDocs(collection(db, "products"));
         const data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-        setProducts(data);
+        setProducts(data.reverse());
       } catch (error) {
         console.error("Error fetching products:", error);
       } finally {
