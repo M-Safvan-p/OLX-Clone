@@ -2,14 +2,14 @@ import { useState } from "react";
 import { Search, Heart, MapPin, ChevronRight, UserCircle  } from "lucide-react";
 import { auth } from "../config/firebase";
 import { signOut } from "firebase/auth";
-import { useAuth } from "react-firebase-hooks/auth";
+import { useAuthState } from "react-firebase-hooks/auth";
 import LoginModal from "./LoginModal";
 import { Link } from "react-router-dom";
 
 export default function Header() {
   const [showLogin, setShowLogin] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
-  const [user] = useAuth(auth);
+  const [user] = useAuthState(auth);
 
   const handleWishlistClick = () => {
     if (!user) setShowLogin(true);
@@ -28,7 +28,7 @@ export default function Header() {
           {/* OLX Logo */}
           <Link to="/" className="flex-shrink-0">
             <img
-              src="../../public/olx.png"
+              src="/olx.png"
               alt="OLX"
               className="h-8 w-auto"
             />
